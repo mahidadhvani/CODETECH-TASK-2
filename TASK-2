@@ -1,0 +1,58 @@
+# Function to calculate GPA and letter grade
+def calculate_gpa(average_grade):
+    if average_grade >= 90:
+        return "A", 4.0
+    elif average_grade >= 80:
+        return "B", 3.0
+    elif average_grade >= 70:
+        return "C", 2.0
+    elif average_grade >= 60:
+        return "D", 1.0
+    else:
+        return "F", 0.0
+
+# Function to input and track student grades
+def track_student_grades():
+    # Dictionary to store student information
+    students = {}
+
+    # Number of students to track
+    num_students = int(input("Enter the number of students to track: "))
+    
+    for _ in range(num_students):
+        student_name = input("\nEnter student name: ")
+        num_assignments = int(input(f"How many assignments did {student_name} complete? "))
+        
+        # List to store grades for the current student
+        grades = []
+
+        for i in range(num_assignments):
+            grade = float(input(f"Enter grade for assignment {i+1}: "))
+            grades.append(grade)
+        
+        # Calculate the average grade
+        average_grade = sum(grades) / len(grades)
+        
+        # Calculate GPA and letter grade
+        letter_grade, gpa = calculate_gpa(average_grade)
+        
+        # Store student data
+        students[student_name] = {
+            "grades": grades,
+            "average_grade": average_grade,
+            "letter_grade": letter_grade,
+            "gpa": gpa
+        }
+
+    # Display the results
+    print("\nSummary of Student Grades:")
+    for student, data in students.items():
+        print(f"\n{student}:")
+        print(f"  Grades: {data['grades']}")
+        print(f"  Average Grade: {data['average_grade']:.2f}")
+        print(f"  Letter Grade: {data['letter_grade']}")
+        print(f"  GPA: {data['gpa']:.2f}")
+
+# Main function to run the program
+if 'student_name':
+  track_student_grades()
